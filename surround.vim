@@ -52,7 +52,7 @@ endfunction
 " deleting surround {{{1
 function s:DeleteSurrounding(char_nr) abort
 	let pos = s:GetPositions(a:char_nr)
-	if pos.open == [0, 0]
+	if pos.open == [0, 0] || pos.close == [0, 0]
 		return
 	endif
 
@@ -67,7 +67,7 @@ endfunction
 " changing surround {{{1
 function s:ChangeSurround(old_nr, new_nr) abort
 	let pos = s:GetPositions(a:old_nr)
-	if pos.open == [0, 0]
+	if pos.open == [0, 0] || pos.close == [0, 0]
 		return
 	endif
 	let [new_open_char, new_close_char] = s:MatchPairs(a:new_nr)
