@@ -97,7 +97,7 @@ function s:GetPositions(char_nr)
 		let pos.open = searchpairpos(open_pat, '', close_pat, 'b')
 
 		if pos.open == [0, 0]
-			let pos.open = searchpairpos(open_pat, '', close_pat, 'bc') == [0, 0]
+			let pos.open = searchpairpos(open_pat, '', close_pat, 'bc')
 		endif
 
 		let pos.close = searchpairpos(open_pat, '', close_pat)
