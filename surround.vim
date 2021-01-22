@@ -82,23 +82,25 @@ endfunction
 
 " getting positions {{{1
 function s:GetPositions(char_nr)
+	let pos = {}
+	let pos.backup = getpos('.')[1:2]
+
 	let [open_char, close_char] = s:MatchPairs(a:char_nr)
-	let open_pat  = '\M'.open_char
+	let open_pat  = '\M'.open_char        " no 'magic' regex
 	let close_pat = '\M'.close_char
 
-	let pos = {}
-	let pos.backup = [line('.'), col('.')]
-	let pos.open = searchpairpos(open_pat, '', close_pat, 'b')
-
-	if pos.open == [0, 0]
-		let pos.open = searchpairpos(open_pat, '', close_pat, 'bc') == [0, 0]
-	endif
-
-	" searching pairs doesn't work when they are identical (quotes, for example)
-	if open_char != close_char
-		let pos.close = searchpairpos(open_pat, '', close_pat)
+	" searchpairpos doesn't work when open_char is equal to close_char (quotes, for example)
+	if open_char == close_char
+		let pos.open  = searchpos(open_pat,  'bc')
+		let pos.close = searchpos(close_pat, 'z')
 	else
-		let pos.close = search(close_pat, 'z')
+		let pos.open = searchpairpos(open_pat, '', close_pat, 'b')
+
+		if pos.open == [0, 0]
+			let pos.open = searchpairpos(open_pat, '', close_pat, 'bc') == [0, 0]
+		endif
+
+		let pos.close = searchpairpos(open_pat, '', close_pat)
 	endif
 	
 	return pos
