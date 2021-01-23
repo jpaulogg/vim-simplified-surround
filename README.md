@@ -9,7 +9,7 @@ confused. I prefer to deal with the spaces separately. Also because I like to ke
 This plugin was written in an attempt to be simple enough that users could make any changes directly
 to it. I believe that this gives users more control and a wider range of possible changes. In
 addition, the script has comments that help to make some customizations (for example, to creating
-custom pairs). It's almost as simple as doing it on your `vimrc`.
+custom pairs). It's almost as simple as doing it on your vimrc.
 
 If you prefere something that provides global variables and options that you can set from
 your vimrc, you should keep with Tpope's [vim-surround](https://github.com/tpope/vim-surround).
@@ -33,19 +33,12 @@ See the examples above:
 | input tex |  key sequence   | output text |  mode  |
 |-----------|-----------------|-------------|--------|
 |   `foo`   |    `ysiw)`      |   `(foo)`   | normal |
-|-----------|-----------------|-------------|--------|
 |   `foo`   |    `viwS(`      |   `(foo)`   | visual |
-|-----------|-----------------|-------------|--------|
 |   `foo`   | `ysiw).<Space>` |  `( foo )`  | normal |
-|-----------|-----------------|-------------|--------|
 | `( foo )` |    `ds<Space>`  |   `(foo)`   | normal |
-|-----------|-----------------|-------------|--------|
 |  `(foo)`  |      `cs)}`     |   `{foo}`   | normal |
-|-----------|-----------------|-------------|--------|
 |  `line`   |     `0ys$"`     |  `"line"`   | normal |
-|-----------|-----------------|-------------|--------|
 |  `line`   |      `V$S"`     |  `"line"`   | visual |
-|-----------|-----------------|-------------|--------|
 
 ## Main differences to Tpope's surround.vim
 
@@ -75,16 +68,16 @@ git clone https://github.com/jpaulogg/vim-simplified-surround
 ```
 
 If you prefer, install using your favorite package manager, or use (Neo)Vim's built-in package
-support. Use `pack` branch in that case:
+support. Use [pack](https://github.com/jpaulogg/vim-simplified-surround/tree/pack) branch in that case:
+
+```vim
+# vim-plug
+Plug 'jpaulogg/vim-simplified-surround', { 'branch' : 'pack' }
+```
 
 ```bash
-# vim-plug
-Plg 'jpaulogg/vim-simplified-surround', { 'branch' : 'pack' }
-
 # built-in package support (neovim)
 mkdir -p ~/.config/nvim/pack/dist/start
 cd ~/.config/nvim/pack/dist/start
-git clone https://github.com/jpaulogg/vim-simplified-surround
-git fetch origin pack
-git checkout pack
+git clone -b pack https://github.com/jpaulogg/vim-simplified-surround
 ```
