@@ -68,6 +68,7 @@ You can simply copy surround.vim to your runtime.
 mkdir -p ~/.config/nvim/plugin
 cd ~/.config/nvim/plugin
 git clone https://github.com/jpaulogg/vim-simplified-surround
+rm -rf vim-simplified-surround/.git* vim-simplified-surround/README.md
 ```
 
 If you prefer, install using your favorite package manager, or use (Neo)Vim's built-in package
