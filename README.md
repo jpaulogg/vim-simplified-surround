@@ -32,11 +32,10 @@ You can simply copy surround.vim to your runtime.
 mkdir -p ~/.config/nvim/plugin
 cd ~/.config/nvim/plugin
 git clone https://github.com/jpaulogg/vim-simplified-surround
-git fetch origin pack
-git checkout pack
 ```
 
-If you prefer, install it using your favorite package manager, or use (Neo)Vim's built-in package support:
+If you prefer, install using your favorite package manager, or use (Neo)Vim's built-in package
+support. Use `pack` branch in that case:
 
 ```
 # vim-plug
@@ -46,4 +45,6 @@ Plg 'jpaulogg/vim-simplified-surround', { 'branch' : 'pack' }
 mkdir -p ~/.config/nvim/pack/dist/start
 cd ~/.config/nvim/pack/dist/start
 git clone https://github.com/jpaulogg/vim-simplified-surround
+git fetch origin pack
+git checkout pack
 ```
