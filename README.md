@@ -37,8 +37,8 @@ See the examples above:
 |   `foo`    | `ysiw).<Space>` |  `( foo )`  | normal |
 | `( foo )`  |    `ds<Space>`  |   `(foo)`   | normal |
 |  `(foo)`   |      `cs)}`     |   `{foo}`   | normal |
-|`whole line`|     `0ys$"`     |  `"line"`   | normal |
-|`whole line`|     `V$S"`      |  `"line"`   | visual |
+|`whole line`|     `0ys$"`     | `whole line`| normal |
+|`whole line`|     `V$S"`      | `whole line`| visual |
 
 ## Main differences to Tpope's surround.vim
 
