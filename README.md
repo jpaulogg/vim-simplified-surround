@@ -1,33 +1,73 @@
-## surround.vim
+# surround.vim
 
 Very simplified version of Tpope's [vim-surround](https://github.com/tpope/vim-surround).
+I wrote this script because the way "(" and ")" works in different ways in the Tpope's plugin left me
+confused. I prefer to deal with the spaces separately. Also because I like to keep things minimal.
 
-`ys{char}` surrounds motions with `{char}`.
+## Philosophy - should you use this plugin?
+
+This plugin was written in an attempt to be simple enough that users could make any changes directly
+to it. I believe that this gives users more control and a wider range of possible changes. In
+addition, the script has comments that help to make some customizations (for example, to creating
+custom pairs). It's almost as simple as doing it on your `vimrc`.
+
+If you prefere something that provides global variables and options that you can set from
+your vimrc, you should keep with Tpope's [vim-surround](https://github.com/tpope/vim-surround).
+
+## Usage
+
+#### visual mode
+
+`S{motion}{char}` surrounds `{motion}` with `{char}`.
+
+#### normal mode
+
+`ys{motion}{char}` surrounds `{motion}` with `{char}`.
 
 `ds{char}` deletes surrounding `{char}`.
 
 `cs{char1}{char2}` changes surrounding `{char1}` with `{char2}`.
 
+See the examples above:
+
+| input tex |  key sequence   | output text |  mode  |
+|-----------|-----------------|-------------|--------|
+|   `foo`   |    `ysiw)`      |   `(foo)`   | normal |
+|-----------|-----------------|-------------|--------|
+|   `foo`   |    `viwS(`      |   `(foo)`   | visual |
+|-----------|-----------------|-------------|--------|
+|   `foo`   | `ysiw).<Space>` |  `( foo )`  | normal |
+|-----------|-----------------|-------------|--------|
+| `( foo )` |    `ds<Space>`  |   `(foo)`   | normal |
+|-----------|-----------------|-------------|--------|
+|  `(foo)`  |      `cs)}`     |   `{foo}`   | normal |
+|-----------|-----------------|-------------|--------|
+|  `line`   |     `0ys$"`     |  `"line"`   | normal |
+|-----------|-----------------|-------------|--------|
+|  `line`   |      `V$S"`     |  `"line"`   | visual |
+|-----------|-----------------|-------------|--------|
+
 ## Main differences to Tpope's surround.vim
 
-- doesn't support tags
-- `ysiw(` is the same of `ysiw)`
+- no complex operations with tags, functions and things like that.
+- `ysiw(` is the same of `ysiw)`.
 - doesn't support repeating `ds` and `cs` operations with `.` command.
-- cursor position after operations
+- cursor position after operations.
 - this version has ~86 lines of code, while Tpope's plugin has ~594 lines of code. 
 
 ## Tips
 
 - you can repeat `ys` operations with `.` but using a different surrounding pair.
-- you can use abbreviations to use pairs with more then one characters.
 - you can use spaces as surrounding pairs.
-- it's very easy to make any changes directly to the script!
+- create custom pairs to surround with more than one character at once.
+- or use abbreviations by file type.
+- it's very easy to make any changes directly to the script, for example to cursor position.
 
 ## Installation
 
 You can simply copy surround.vim to your runtime.
 
-```
+```bash
 # in neovim
 mkdir -p ~/.config/nvim/plugin
 cd ~/.config/nvim/plugin
@@ -37,11 +77,11 @@ git clone https://github.com/jpaulogg/vim-simplified-surround
 If you prefer, install using your favorite package manager, or use (Neo)Vim's built-in package
 support. Use `pack` branch in that case:
 
-```
+```bash
 # vim-plug
 Plg 'jpaulogg/vim-simplified-surround', { 'branch' : 'pack' }
 
-# built-in package (neovim)
+# built-in package support (neovim)
 mkdir -p ~/.config/nvim/pack/dist/start
 cd ~/.config/nvim/pack/dist/start
 git clone https://github.com/jpaulogg/vim-simplified-surround
