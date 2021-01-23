@@ -56,14 +56,15 @@ See the examples above:
 - create [custom pairs](https://github.com/jpaulogg/vim-simplified-surround/blob/2ba2a950f5228ce0ad088602fe38659cea19dd37/surround.vim#L31-L33)
   to surround with more than one character at once.
 - or use abbreviations by file type.
-- it's very easy to make any changes directly to the script, for example to cursor position.
+- it's very easy to make any changes directly to the script (for example to cursor position).
 
 ## Installation
 
 You can simply copy surround.vim to your runtime.
 
 ```bash
-# in neovim
+# in vim use '~/.vim/' instead of '~/.config/nvim'
+
 mkdir -p ~/.config/nvim/plugin
 cd ~/.config/nvim/plugin
 git clone https://github.com/jpaulogg/vim-simplified-surround
@@ -78,7 +79,7 @@ Plug 'jpaulogg/vim-simplified-surround', { 'branch' : 'pack' }
 ```
 
 ```bash
-# built-in package support (neovim)
+# built-in package support (in vim use '~/.vim/' instead of '~/.config/nvim')
 mkdir -p ~/.config/nvim/pack/dist/start
 cd ~/.config/nvim/pack/dist/start
 git clone -b pack https://github.com/jpaulogg/vim-simplified-surround
