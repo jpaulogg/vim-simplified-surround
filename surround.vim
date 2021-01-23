@@ -27,7 +27,11 @@ function s:MatchPairs(char_nr)
 		return ['[', ']']
 	elseif a:char_nr == 123 || a:char_nr == 125  " '{' or '}'
 		return ['{', '}']
-	else                                         " quotes, spaces, etc
+
+	" you can create custom pairs. Get char_nr with char2nr() function. For example:
+	" elseif a:char_nr == 96                     " '`'
+	" 	return ['```', '```']
+	else                                         " when pairs are the same (quotes, spaces, etc)
 		return [nr2char(a:char_nr), nr2char(a:char_nr)]
 	endif
 endfunction
