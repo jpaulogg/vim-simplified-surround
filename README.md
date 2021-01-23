@@ -30,15 +30,15 @@ your vimrc, you should keep with Tpope's [vim-surround](https://github.com/tpope
 
 See the examples above:
 
-| input tex |  key sequence   | output text |  mode  |
-|-----------|-----------------|-------------|--------|
-|   `foo`   |    `ysiw)`      |   `(foo)`   | normal |
-|   `foo`   |    `viwS(`      |   `(foo)`   | visual |
-|   `foo`   | `ysiw).<Space>` |  `( foo )`  | normal |
-| `( foo )` |    `ds<Space>`  |   `(foo)`   | normal |
-|  `(foo)`  |      `cs)}`     |   `{foo}`   | normal |
-|  `line`   |     `0ys$"`     |  `"line"`   | normal |
-|  `line`   |      `V$S"`     |  `"line"`   | visual |
+| input tex  |  key sequence   | output text |  mode  |
+|------------|-----------------|-------------|--------|
+|   `foo`    |    `ysiw)`      |   `(foo)`   | normal |
+|   `foo`    |    `viwS(`      |   `(foo)`   | visual |
+|   `foo`    | `ysiw).<Space>` |  `( foo )`  | normal |
+| `( foo )`  |    `ds<Space>`  |   `(foo)`   | normal |
+|  `(foo)`   |      `cs)}`     |   `{foo}`   | normal |
+|`whole line`|     `0ys$"`     |  `"line"`   | normal |
+|`whole line`|     `V$S"`      |  `"line"`   | visual |
 
 ## Main differences to Tpope's surround.vim
 
@@ -71,7 +71,7 @@ If you prefer, install using your favorite package manager, or use (Neo)Vim's bu
 support. Use [pack](https://github.com/jpaulogg/vim-simplified-surround/tree/pack) branch in that case:
 
 ```vim
-# vim-plug
+" vim-plug
 Plug 'jpaulogg/vim-simplified-surround', { 'branch' : 'pack' }
 ```
 
