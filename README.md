@@ -10,7 +10,7 @@ This plugin was written in an attempt to be simple enough that users could make 
 to it. I believe that this gives users more control and a wider range of possible changes. In
 addition, the script has comments that help to make some customizations (for example, to creating
 [custom pairs](https://github.com/jpaulogg/vim-simplified-surround/blob/2ba2a950f5228ce0ad088602fe38659cea19dd37/surround.vim#L31-L33).
-It's almost as simple as doing it on your vimrc.
+It's almost as simple as doing it in your vimrc.
 
 If you prefere something that provides global variables and options that you can set from
 your vimrc, you should keep with Tpope's [vim-surround](https://github.com/tpope/vim-surround).
