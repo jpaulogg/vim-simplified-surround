@@ -21,13 +21,10 @@ nmap <silent> cs <Cmd>call <SID>ChangeSurround(getchar(), getchar())<CR>
 function s:MatchPairs(char_nr)
 	if a:char_nr == 40 || a:char_nr == 41        " '(' or ')'
 		return ['(', ')']
-
 	elseif a:char_nr == 60	|| a:char_nr == 62   " '<' or '>'
 		return ['<', '>']
-
 	elseif a:char_nr == 91	|| a:char_nr == 93   " '[' or ']'
 		return ['[', ']']
-
 	elseif a:char_nr == 123 || a:char_nr == 125  " '{' or '}'
 		return ['{', '}']
 	else                                         " quotes, spaces, etc
@@ -50,13 +47,13 @@ function s:SurroundMotion(type, ...)
 endfunction
 
 " deleting surround {{{1
-function s:DeleteSurrounding(char_nr) abort
-	let pos = s:GetPositions(a:char_nr)
+function s:DeleteSurrounding(char_nr)
+	let pos = s:PairPosition(a:char_nr)
 	if pos.open == [0, 0] || pos.close == [0, 0]
 		return
 	endif
 
-	" already in pos.close
+	" cursor already in pos.close
 	normal x
 	call cursor(pos.open)
 	normal x
@@ -65,14 +62,14 @@ function s:DeleteSurrounding(char_nr) abort
 endfunction
 
 " changing surround {{{1
-function s:ChangeSurround(old_nr, new_nr) abort
-	let pos = s:GetPositions(a:old_nr)
+function s:ChangeSurround(old_nr, new_nr)
+	let pos = s:PairPosition(a:old_nr)
 	if pos.open == [0, 0] || pos.close == [0, 0]
 		return
 	endif
 	let [new_open_char, new_close_char] = s:MatchPairs(a:new_nr)
 
-	" already in pos.close
+	" cursor already in pos.close
 	exec 'normal r'.new_close_char
 	call cursor(pos.open)
 	exec 'normal r'.new_open_char
@@ -80,8 +77,8 @@ function s:ChangeSurround(old_nr, new_nr) abort
 	call cursor(pos.backup)
 endfunction
 
-" getting positions {{{1
-function s:GetPositions(char_nr)
+" getting pair position {{{1
+function s:PairPosition(char_nr)
 	let pos = {}
 	let pos.backup = getpos('.')[1:2]
 
