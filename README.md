@@ -55,12 +55,12 @@ See the examples above:
 - you can use spaces as surrounding pairs.
 - create [custom pairs](https://github.com/jpaulogg/vim-simplified-surround/blob/2ba2a950f5228ce0ad088602fe38659cea19dd37/surround.vim#L31-L33)
   to surround with more than one character at once.
-- or use abbreviations by file type.
+- or use abbreviations (this one can work by file type).
 - it's very easy to make any changes directly to the script (for example to cursor position).
 
 ## Installation
 
-You can simply copy surround.vim to your runtime.
+You can simply copy surround.vim to your runtime. From the shell:
 
 ```bash
 # in vim use '~/.vim/' instead of '~/.config/nvim'
