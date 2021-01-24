@@ -13,7 +13,7 @@ addition, the script has comments that help to make some customizations (for exa
 It's almost as simple as doing it in your vimrc.
 
 If you prefere something that provides global variables and options that you can set from
-your vimrc, you should keep with Tpope's [vim-surround](https://github.com/tpope/vim-surround).
+your vimrc, you should keep Tpope's [vim-surround](https://github.com/tpope/vim-surround).
 
 ## Usage
 
@@ -31,15 +31,15 @@ your vimrc, you should keep with Tpope's [vim-surround](https://github.com/tpope
 
 See the examples above:
 
-| input tex  |  key sequence   | output text |  mode  |
-|------------|-----------------|-------------|--------|
-|   `foo`    |    `ysiw)`      |   `(foo)`   | normal |
-|   `foo`    |    `viwS(`      |   `(foo)`   | visual |
-|   `foo`    | `ysiw).<Space>` |  `( foo )`  | normal |
-| `( foo )`  |    `ds<Space>`  |   `(foo)`   | normal |
-|  `(foo)`   |      `cs)}`     |   `{foo}`   | normal |
-|`whole line`|     `0ys$"`     | `whole line`| normal |
-|`whole line`|     `V$S"`      | `whole line`| visual |
+| input tex  | key sequence  | output text  |  mode  |
+|------------|---------------|--------------|--------|
+|`foo`       |`ysiw)`        |`(foo)`       | normal |
+|`foo`       |`viwS(`        |`(foo)`       | visual |
+|`foo`       |`ysiw).<Space>`|`( foo )`     | normal |
+|`( foo )`   |`ds<Space>`    |`(foo)`       | normal |
+|`(foo)`     |`cs)}`         |`{foo}`       | normal |
+|`whole line`|`0ys$"`        |`"whole line"`| normal |
+|`whole line`|`V$S"`         |`"whole line"`| visual |
 
 ## Main differences to Tpope's surround.vim
 
