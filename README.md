@@ -41,7 +41,7 @@ See the examples above:
 |`whole line`|`0ys$"`        |`"whole line"`| normal |
 |`whole line`|`V$S"`         |`"whole line"`| visual |
 
-## Main differences to Tpope's surround.vim
+## Main differences from Tpope's surround.vim
 
 - no complex operations with tags, functions and things like that.
 - `ysiw(` is the same of `ysiw)`.
