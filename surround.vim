@@ -28,7 +28,7 @@ function s:MatchPairs(char_nr)
 	elseif a:char_nr == 123 || a:char_nr == 125  " '{' or '}'
 		return ['{', '}']
 	" you can create custom pairs. Get character number with char2nr() function. For example:
-	" elseif a:char_nr == 96                     " '`'
+	" elseif a:char_nr == 96                     " `
 	" 	return ['```', '```']
 	else                                         " when pairs are the same (quotes, spaces, etc)
 		return [nr2char(a:char_nr), nr2char(a:char_nr)]
@@ -43,10 +43,11 @@ function s:SurroundMotion(type, ...)
 
 	call cursor(motion_end)
 	exec 'normal a'.close_char
+	let save_pos = [line('.'), col('.')]
 	call cursor(motion_start)
 	exec 'normal i'.open_char
 
-	call cursor(motion_end[0], motion_end[1] + 1)
+	call cursor(save_pos)
 endfunction
 
 " deleting surround {{{1
@@ -61,7 +62,7 @@ function s:DeleteSurrounding(char_nr)
 	call cursor(pos.open)
 	normal x
 
-	call cursor(pos.first)
+	call cursor(pos.save)
 endfunction
 
 " changing surround {{{1
@@ -77,13 +78,13 @@ function s:ChangeSurround(old_nr, new_nr)
 	call cursor(pos.open)
 	exec 'normal r'.new_open_char
 
-	call cursor(pos.first)
+	call cursor(pos.save)
 endfunction
 
 " getting pair position {{{1
 function s:PairPosition(char_nr)
 	let pos = {}
-	let pos.first = getpos('.')[1:2]
+	let pos.save = [line('.'), col('.')]
 
 	let [open_char, close_char] = s:MatchPairs(a:char_nr)
 	let open_pat  = '\M'.open_char        " no 'magic' regex
