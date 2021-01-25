@@ -42,10 +42,10 @@ function s:SurroundMotion(type, ...)
 	let motion_end   = [line("']"), col("']")]
 
 	call cursor(motion_end)
-	exec 'normal a'.close_char
+	exec 'normal a'.close_char."\<Esc>"
 	let save_pos = [line('.'), col('.')]
 	call cursor(motion_start)
-	exec 'normal i'.open_char
+	exec 'normal i'.open_char."\<Esc>"
 
 	call cursor(save_pos)
 endfunction
