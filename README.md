@@ -19,7 +19,7 @@ your vimrc, you should keep Tpope's [vim-surround](https://github.com/tpope/vim-
 
 #### visual mode
 
-`S{motion}{char}` surrounds `{motion}` with `{char}`.
+`S{char}` surrounds from start of selection to cursor position with `{char}`.
 
 #### normal mode
 
@@ -46,8 +46,8 @@ See the examples above:
 - no complex operations with tags, functions and things like that.
 - `ysiw(` is the same of `ysiw)`.
 - doesn't support repeating `ds` and `cs` operations with `.` command.
-- cursor position after operations.
-- this version has ~86 lines of code, while Tpope's plugin has ~594 lines of code. 
+- cursor positions after operations.
+- this version has ~90 lines of code, while Tpope's plugin has ~590 lines of code. 
 
 ## Tips
 
@@ -56,7 +56,7 @@ See the examples above:
 - create [custom pairs](https://github.com/jpaulogg/vim-simplified-surround/blob/2ba2a950f5228ce0ad088602fe38659cea19dd37/surround.vim#L31-L33)
   to surround with more than one character at once.
 - or use abbreviations (this one can work by file type).
-- it's very easy to make any changes directly to the script (for example to cursor position).
+- it's very easy to make any changes directly to the script (for example, to cursor positions).
 
 ## Installation
 
@@ -64,24 +64,15 @@ You can simply copy surround.vim to your runtime. From the shell:
 
 ```bash
 # in vim use '~/.vim/' instead of '~/.config/nvim'
-
-mkdir -p ~/.config/nvim/plugin
-cd ~/.config/nvim/plugin
-git clone https://github.com/jpaulogg/vim-simplified-surround
-rm -rf vim-simplified-surround/.git* vim-simplified-surround/README.md
+curl -fLo ~/.config/nvim/plugin/vim-simplified-surround --create-dirs \
+	https://raw.githubusercontent.com/jpaulogg/vim-simplified-surround/master/surround.vim
 ```
 
-If you prefer, install using your favorite package manager, or use (Neo)Vim's built-in package
-support. Use [pack](https://github.com/jpaulogg/vim-simplified-surround/tree/pack) branch in that case:
-
-```vim
-" vim-plug
-Plug 'jpaulogg/vim-simplified-surround', { 'branch' : 'pack' }
-```
+If you prefer use (Neo)Vim's built-in package support.
 
 ```bash
-# built-in package support (in vim use '~/.vim/' instead of '~/.config/nvim')
-mkdir -p ~/.config/nvim/pack/dist/start
-cd ~/.config/nvim/pack/dist/start
-git clone -b pack https://github.com/jpaulogg/vim-simplified-surround
+# in vim use '~/.vim/' instead of '~/.config/nvim'
+curl -fLo ~/.config/nvim/pack/any/start/vim-simplified-surround/plugin/surround.vim \
+	--create-dirs \
+	https://raw.githubusercontent.com/jpaulogg/vim-simplified-surround/master/surround.vim 
 ```
