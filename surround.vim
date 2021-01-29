@@ -1,9 +1,10 @@
 " vim: set noet fdm=marker :
-" 'zR' to open and 'zM' to close all folds
+" zR to open and zM to close all folds
 "
 " surround.vim - <https://github.com/jpaulogg/vim-simplified-surround.git>
 " Licence: public domain
 " Last Change: 2021/01/22  
+
 " Very simplified version of Tpope's vim-surround.
 
 if exists('g:loaded_simplified_surround')
@@ -35,8 +36,7 @@ function s:MatchPairs(char_nr)
 	endif
 endfunction
 
-" adding surround to motion and visual selection {{{1
-function s:SurroundMotion(type, ...)
+function s:SurroundMotion(type, ...)                        " {{{1
 	let [open_char, close_char] = s:MatchPairs(getchar())
 	let motion_start = [line("'["), col("'[")]
 	let motion_end   = [line("']"), col("']")]
@@ -50,8 +50,7 @@ function s:SurroundMotion(type, ...)
 	call cursor(save_pos)
 endfunction
 
-" deleting surround {{{1
-function s:DeleteSurrounding(char_nr)
+function s:DeleteSurrounding(char_nr)                       " {{{1
 	let pos = s:PairPosition(a:char_nr)
 	if pos.open == [0, 0] || pos.close == [0, 0]
 		return
@@ -65,24 +64,22 @@ function s:DeleteSurrounding(char_nr)
 	call cursor(pos.save)
 endfunction
 
-" changing surround {{{1
-function s:ChangeSurround(old_nr, new_nr)
+function s:ChangeSurround(old_nr, new_nr)                   " {{{1
 	let pos = s:PairPosition(a:old_nr)
 	if pos.open == [0, 0] || pos.close == [0, 0]
 		return
 	endif
-	let [new_open_char, new_close_char] = s:MatchPairs(a:new_nr)
+	let [new_open, new_close] = s:MatchPairs(a:new_nr)
 
 	" cursor already in pos.close
-	exec 'normal r'.new_close_char
+	exec 'normal r'.new_close
 	call cursor(pos.open)
-	exec 'normal r'.new_open_char
+	exec 'normal r'.new_open
 
 	call cursor(pos.save)
 endfunction
 
-" getting pair position {{{1
-function s:PairPosition(char_nr)
+function s:PairPosition(char_nr)                            " {{{1
 	let pos = {}
 	let pos.save = [line('.'), col('.')]
 
